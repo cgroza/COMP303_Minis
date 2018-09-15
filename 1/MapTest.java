@@ -85,7 +85,7 @@ public class MapTest
     {
 
         System.out.println("Test case for method isValid: ");
-        // Create maps between height and widths 0 to 3 
+        // Create maps between height and widths 0 to 3
         for(int w = 1; w <= 3; w++)
             {
                 for(int h = 1; h <= 3; h++)

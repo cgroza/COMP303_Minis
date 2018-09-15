@@ -1,4 +1,3 @@
-import java.lang.UnsupportedOperationException;
 class Map
 {
     private char[][] map;
@@ -83,9 +82,9 @@ class Map
         if(x >= 0 && x < maxWidth && y >= 0 && y < maxHeight && isCharAValidTile(tile))
             {
                 map[y][x] = tile;
-                return true;    // return true when successful
+                return true;       // return true when successful
             }
-        return false;            // return false when fails
+        return false;              // return false when fails
     }
 
     // Purpose: Checks if map has correct dimension and only contains valid tiles

@@ -24,7 +24,7 @@ class MapMain
         }
         catch(Exception e) {
             // Negative values are used as error values and will make the
-            // program ask the question again.
+            // program ask the question again
             return -1;
         }
     }
@@ -41,12 +41,12 @@ class MapMain
         catch(Exception e)
             {
                 // The null byte is used as an error value and will make the
-                // program ask the question again.
+                // program ask the question again
                 return '\0';
             }
     }
 
-    // Helper functions that print to the screen and take input according to a template.
+    // Helper functions that print to the screen and take input according to a template
 
     // Purpose: Dimension input template for width and height
     // Parameters: dimName - dimension name (width, height) to apply to template
@@ -59,7 +59,7 @@ class MapMain
             System.out.printf("Please input the maximum number of %ss: ", dimName);
             dim = getPositiveNumber();
 
-            // If dimension is invalid, report error and try again.
+            // If dimension is invalid, report error and try again
             if(dim <=0)
                 System.out.printf("A %s must be an integer greater than 0.\n", dimName);
             else return dim;
@@ -79,7 +79,7 @@ class MapMain
             component = getPositiveNumber();
 
             // Check if coordinate is in valid
-            // If coordinate is invalid, report error and try again.
+            // If coordinate is invalid, report error and try again
             if(component < 0 || component >= maxValue)
                 System.out.printf("Invalid %s! it must be an integer between 0 and %d\n", componentName, maxValue - 1);
             else return component;
@@ -96,7 +96,7 @@ class MapMain
         while(true) {
             System.out.print("Character: ");
             tile = getChar();
-            // If tile is invalid, report and try again.
+            // If tile is invalid, report and try again
             if(!Map.isCharAValidTile(tile))
                 System.out.println("Invalid character! It must be either ~ or G or #.");
             else return tile;
@@ -114,7 +114,7 @@ class MapMain
             System.out.println("Would you like to enter another character (Y/N): ");
             answer = getChar();
             // If answer is invalid, report and try again. Otherwise, return
-            // true if Y and false if N.
+            // true if Y and false if N
             if(answer != 'Y' && answer != 'N')
                 System.out.println("Invalid character! It must be either Y or N.");
             else
@@ -157,7 +157,7 @@ class MapMain
                     break;
             }
         System.out.println("Map is below: ");
-        map.printMap(); // Show the map to the user
+        map.printMap();                          // show the map to the user
     }
 
 }
