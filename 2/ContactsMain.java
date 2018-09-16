@@ -87,11 +87,13 @@ class ContactsMain
         ContactsContact contact = null;
         while(true)
             {
+                // Show contact options to user
                 System.out.println("1. New Acquaintance");
                 System.out.println("2. New Business");
                 System.out.println("3. New Friend");
                 System.out.println("4. Back");
 
+                // Read user choice
                 menuEntry = getMenuNumber(minEntry, maxEntry);
 
                 // Restart if menu selection is invalid
@@ -100,6 +102,7 @@ class ContactsMain
                         System.out.println("Invalid selection. Try again.");
                         continue;
                     }
+                // Create the appropriate user
                 switch(menuEntry)
                     {
                     case 1:
@@ -110,7 +113,7 @@ class ContactsMain
                         contact = gatherFriend(); break;
                     case 4: return;
                     }
-                // add contact to hash map using the name as key
+                // Add contact to hash map using the name as key
                 contacts.put(contact.getName(), contact);
                 return;
             }
@@ -121,12 +124,17 @@ class ContactsMain
     // Returns: None
     // Side effects: Reads STDIN, writes to STDOUT
     public static void findContact() {
+        // Get query
         String name = getString("Contact name to search: ");
+        // Search query in database
         ContactsContact contact = contacts.get(name);
+        // If found, then display the information
         if(contact != null)
             {
+                // Output
                 HashMap<String, String> records = contact.toHashMap();
                 System.out.printf("Contact type: %s\n", contact.getContactType());
+                // Print all the key, values of all fields
                 for(String key : records.keySet())
                         System.out.printf("%s : %s\n", key, records.get(key));
             }
@@ -148,9 +156,11 @@ class ContactsMain
     // Returns: None
     // Side effects: Reads STDIN, writes to STDOUT
     public static void listAll() {
+        // Print header
         System.out.println("TYPE\tNAME\tPHONE\tADDRESS\tBIRTHDATE\tBUSINESS NAME\n");
         for(String key : contacts.keySet())
             {
+                // Print each contact according to the template
                 ContactsContact contact = contacts.get(key);
                 HashMap<String, String> record = contact.toHashMap();
                 System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n",
@@ -175,17 +185,22 @@ class ContactsMain
         int menuEntry;
         while(true)
             {
+                // Show the user the main menu
                 System.out.println("1. New Contact");
                 System.out.println("2. Find Contact");
                 System.out.println("3. List All");
                 System.out.println("4. Quit");
+
+                // Read user choice
                 menuEntry = getMenuNumber(minEntry, maxEntry);
 
+                // Try again if selection is invalid
                 if(menuEntry  < minEntry)
                     {
                         System.out.println("Invalid selection. Try again.");
                         continue;
                     }
+                // Send user to the appropriate sub-menu
                 switch(menuEntry)
                     {
                     case 1:
