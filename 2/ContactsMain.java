@@ -80,7 +80,7 @@ class ContactsMain
     // Parameters: None
     // Returns: None
     // Side effects: Reads STDIN, writes to STDOUT
-    public static void newContact() {
+    public static void menuNewContact() {
         final int maxEntry = 4;
         final int minEntry = 1;
         int menuEntry;
@@ -123,7 +123,7 @@ class ContactsMain
     // Parameters: None
     // Returns: None
     // Side effects: Reads STDIN, writes to STDOUT
-    public static void findContact() {
+    public static void menuFindContact() {
         // Get query
         String name = getString("Contact name to search: ");
         // Search query in database
@@ -155,7 +155,7 @@ class ContactsMain
     // Parameters: None
     // Returns: None
     // Side effects: Reads STDIN, writes to STDOUT
-    public static void listAll() {
+    public static void menuListAll() {
         // Print header
         System.out.println("TYPE\tNAME\tPHONE\tADDRESS\tBIRTHDATE\tBUSINESS NAME\n");
         for(String key : contacts.keySet())
@@ -178,7 +178,7 @@ class ContactsMain
     // Parameters: None
     // Returns: None
     // Side effects: Reads STDIN, writes to STDOUT
-    public static void mainMenu()
+    public static void menuMain()
     {
         final int maxEntry = 4;
         final int minEntry = 1;
@@ -204,11 +204,11 @@ class ContactsMain
                 switch(menuEntry)
                     {
                     case 1:
-                        newContact(); break;
+                        menuNewContact(); break;
                     case 2:
-                        findContact(); break;
+                        menuFindContact(); break;
                     case 3:
-                        listAll(); break;
+                        menuListAll(); break;
                     case 4:
                         return;
                     }
@@ -216,6 +216,6 @@ class ContactsMain
     }
 
     public static void main(String[] args) {
-        mainMenu();
+        menuMain();
     }
 }
