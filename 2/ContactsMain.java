@@ -3,9 +3,8 @@ import java.util.HashMap;
 
 class ContactsMain
 {
-    // Stores database of contacts indexed by their name
-    private static HashMap<String, ContactsContact> contacts = new HashMap<String, ContactsContact>();
 
+    private static ContactsBook contacts = new ContactsBook();
     // Purpose: Read a single number from the prompt
     // Parameters: None
     // Returns: User input integer, negative integers as error values
@@ -113,8 +112,8 @@ class ContactsMain
                         contact = gatherFriend(); break;
                     case 4: return;
                     }
-                // Add contact to hash map using the name as key
-                contacts.put(contact.getName(), contact);
+                // Add contact to the contact book
+                contacts.addContact(contact);
                 return;
             }
     }
@@ -127,7 +126,7 @@ class ContactsMain
         // Get query
         String name = getString("Contact name to search: ");
         // Search query in database
-        ContactsContact contact = contacts.get(name);
+        ContactsContact contact = contacts.findContact(name);
         // If found, then display the information
         if(contact != null)
             {
@@ -157,13 +156,13 @@ class ContactsMain
     // Side effects: Reads STDIN, writes to STDOUT
     public static void menuListAll() {
         // Print header
-        System.out.println("TYPE\tNAME\tPHONE\tADDRESS\tBIRTHDATE\tBUSINESS NAME\n");
-        for(String key : contacts.keySet())
+        System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n",
+                          "TYPE", "NAME", "PHONE", "ADDRESS", "BIRTHDATE", "BUSINESS NAME\n");
+        for(ContactsContact contact : contacts.getAllContacts())
             {
                 // Print each contact according to the template
-                ContactsContact contact = contacts.get(key);
                 HashMap<String, String> record = contact.toHashMap();
-                System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n",
+                System.out.printf("%-20s %-20s %-20s %-20s %-20s %-20s\n",
                                   contact.getContactType(),
                                   record.get("name"),
                                   record.get("phone"),

@@ -1,77 +1,10 @@
 import java.util.HashMap;
+import java.util.LinkedList;
 
 class ContactsTest
 {
     private static HashMap<String, ContactsContact> contactTypes = new HashMap<String, ContactsContact>();
-
-    public static void testSetName()
-    {
-        System.out.println("Testing setName and the getter");
-        String testName = "Bugs Bunny";
-        // Test setName in all child classes of ContactsContact
-        for(String type : contactTypes.keySet())
-            {
-                ContactsContact c = contactTypes.get(type);
-                String reportedType = c.getContactType();
-                c.setName(testName);
-                System.out.printf("Contact type: %s, Field name: %s, set: %s, get: %s, Valid: %B\n",
-                                  reportedType, "name", testName, c.getName(), c.getName().equals(testName));
-            }
-    }
-
-    public static void testSetPhone()
-    {
-        System.out.println("Testing setPhone and the getter");
-        String testPhone = "1 800 1234";
-        // Test setPhone in all child classes of ContactsContact
-        for(String type : contactTypes.keySet())
-            {
-                ContactsContact c = contactTypes.get(type);
-                String reportedType = c.getContactType();
-                c.setPhone(testPhone);
-                System.out.printf("Contact type: %s, Field name: %s, set: %s, get: %s, Valid: %B\n",
-                                  reportedType, "phone", testPhone, c.getPhone(), c.getPhone().equals(testPhone));
-            }
-    }
-
-    public static void testSetAddress()
-    {
-        System.out.println("Testing setAddress and the getter");
-        String testAddress = "325 S. Santa Claus Lane, North Pole";
-        // Test setAddress in all child classes of ContactsWithAddress
-        for(String type : new String[]{"Business", "Friend"})
-            {
-                ContactsWithAddress c = (ContactsWithAddress) contactTypes.get(type);
-                String reportedType = c.getContactType();
-                c.setAddress(testAddress);
-                System.out.printf("Contact type: %s, Field name: %s, set: %s, get: %s, Valid: %B\n",
-                                  reportedType, "address", testAddress, c.getAddress(), c.getAddress().equals(testAddress));
-            }
-    }
-
-    public static void testSetBirthday()
-    {
-        // Test setBirthday in ContactsFriend class
-        System.out.println("Testing setBirthday and the getter");
-        String testBirthday = "4th July";
-        ContactsFriend c = (ContactsFriend) contactTypes.get("Friend");
-        String reportedType = c.getContactType();
-        c.setBirthday(testBirthday);
-        System.out.printf("Contact type: %s, Field name: %s, set: %s, get: %s, Valid: %B\n",
-                          reportedType, "birthday", testBirthday, c.getBirthday(), c.getBirthday().equals(testBirthday));
-    }
-
-    public static void testSetBusinesName()
-    {
-        // Test setBusinessName in ContactsBusiness class
-        System.out.println("Testing setBusinessName and the getter");
-        String testBusiness = "Funny Business Incorporated";
-        ContactsBusiness c = (ContactsBusiness) contactTypes.get("Business");
-        String reportedType = c.getContactType();
-        c.setBusinessName(testBusiness);
-        System.out.printf("Contact type: %s, Field name: %s, set: %s, get: %s, Valid: %B\n",
-                          reportedType, "business", testBusiness, c.getBusinessName(), c.getBusinessName().equals(testBusiness));
-    }
+    private static ContactsBook book = new ContactsBook();
 
     public static void testGetContactType()
     {
@@ -129,6 +62,37 @@ class ContactsTest
                           c.getContactType(), "business", castedB.getBusinessName(), fields.get("business"), castedB.getBusinessName().equals(fields.get("business")));
     }
 
+    public static void testAddContact()
+    {
+        System.out.println("Testing addContact");
+        for(ContactsContact contact : contactTypes.values())
+            {
+                book.addContact(contact);
+                ContactsContact found = book.findContact(contact.getName());
+                System.out.printf("Adding %s\t Found: %s \t Valid: %B\n", contact.getName(), found.getName(),
+                                  contact.getName().equals(found.getName()));
+            }
+    }
+
+    public static void testFindContact()
+    {
+        System.out.println("Testing findContact");
+        for(ContactsContact contact : contactTypes.values())
+            {
+                ContactsContact found = book.findContact(contact.getName());
+                System.out.printf("Finding %s \t Valid: %B\n", contact.getName(), found.getName(),
+                                  contact.getName().equals(found.getName()));
+            }
+    }
+
+    public static void testGetAllContacts()
+    {
+        System.out.println("Testing getAllContacts");
+        LinkedList<ContactsContact> allContacts = book.getAllContacts();
+        for(ContactsContact contact : contactTypes.values())
+                System.out.printf("Contact name: %s\tIn list: %B\n", contact.getName(), allContacts.contains(contact));
+    }
+
     public static void main(String[] args)
     {
         // Initialize test cases
@@ -136,13 +100,11 @@ class ContactsTest
         contactTypes.put("Business", new ContactsBusiness("John Doe", "22345678", "2 Main Street", "ACME"));
         contactTypes.put("Acquaintance", new ContactsAcquaintance("John Someguy", "52345678"));
 
+        testAddContact();
+        testFindContact();
+        testGetAllContacts();
+
         testGetContactType();
         testToHashMap();
-        testSetName();
-        testSetPhone();
-        testSetAddress();
-        testSetBirthday();
-        testSetBusinesName();
-
     }
 }
