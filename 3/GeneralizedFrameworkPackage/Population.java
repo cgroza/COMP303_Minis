@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+// Generalization of a collection of entities that can form groups between them
+// within a population. Ex: A school with students in courses.  A league with players in teams.
 class Population<G extends Group, M extends Member>
 {
     // List of all groups that exist in this population of entities.

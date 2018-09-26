@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 // Generalization of an entity that can be part of Groups and can accumulate
-// tokens associated with those groups. Ex: stduents in a course, players in a
+// tokens associated with those groups. Ex: students in a course, players in a
 // competition.
 abstract class Member <G extends Group>
 {
@@ -30,7 +30,7 @@ abstract class Member <G extends Group>
 
     // Evaluates the member according to their type to see if they respect all
     // the conditions to remain in the group.
-    public abstract bool isInGoodStanding();
+    public abstract bool isValid();
 
     // Various getters
     public String getMemberID(G group);
