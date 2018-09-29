@@ -6,11 +6,11 @@ abstract class Student
     private String ID;          // Student ID
 
     // History of courses taken in past semesters.
-    public ArrayList<Course> courseHistory;
+    private ArrayList<Course> courseHistory;
     // Final grades of already completed courses.
-    public ArrayList<Pair<Course, int>> courseGrades;
+    private ArrayList<Pair<Course, int>> courseGrades;
     // List of courses in the current semesters.
-    public ArrayList<Course> registeredCourses;
+    private ArrayList<Course> registeredCourses;
 
     public Student(String aStudentName, String anID);
 

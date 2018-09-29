@@ -1,13 +1,16 @@
+package GeneralGroups;          // part of generalized framework package
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 // Generalization of a collection of entities that can form groups between them
 // within a population. Ex: A school with students in courses.  A league with players in teams.
-class Population<G extends Group, M extends Member>
+public class Population<G extends Group, M extends Member>
 {
-    // List of all groups that exist in this population of entities.
-    private ArrayList<C> groups;
-    // List of all entities in this population>
-    private ArrayList<S> members;
+    // An index of groups by their unique ID
+    private HashMap<String, C> groups;
+    // An index of all members by their unique memberID>
+    private HashMap<String, S> members;
     // Identifier for the population
     private String populationID;
 
@@ -21,8 +24,8 @@ class Population<G extends Group, M extends Member>
     public void newMember(M member);
 
     // Getters
-    public ArrayList<M> getMembers();
-    public ArrayList<G> getGroups();
+    public HashMap<String, M> getMembers();
+    public HashMap<String, G> getGroups();
 
     public String getPopulationID();
 }

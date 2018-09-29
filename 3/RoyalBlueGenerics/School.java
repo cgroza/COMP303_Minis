@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 class School<C extends Course, S extends Student>
 {
-    // List of all courses ever given at this school.
-    private ArrayList<C> courses;
-    // List of all students in this school.
-    private ArrayList<S> students;
+    // Index of all courses ever given at this school by unique course name
+    private HashMap<C> courses;
+    // Index of all students in this school by unique student id
+    private HashMap<S> students;
     // Identifier for the school
     private String schoolName;
 
@@ -22,5 +22,5 @@ class School<C extends Course, S extends Student>
     public ArrayList<S> getStudents();
     public ArrayList<C> getCourses();
 
-    String getSchoolName();
+    public String getSchoolName();
 }

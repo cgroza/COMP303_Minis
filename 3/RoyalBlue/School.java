@@ -1,11 +1,11 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 class School
 {
-    // List of all courses ever given at this school.
-    private ArrayList<Course> courses;
-    // List of all students in this school.
-    private ArrayList<Student> students;
+    // Index of all courses ever given at this school by unique course name
+    private HashMap<String, Course> courses;
+    // Index of all students in this school by unique student id
+    private HashMap<String, Student> students;
     // Identifier for the school
     private String schoolName;
 

@@ -1,11 +1,10 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 class Course
 {
-    // List of students registered in this course.
-    private ArrayList<Student> registeredStudents;
+    // Index of students registered in this course by their unique student ID.
+    private HashMap<String, Student> registeredStudents;
     // List of grades associated to each student.
     private HashMap<Student, LinkedList<Integer>> gradeBook;
     // Course identifier

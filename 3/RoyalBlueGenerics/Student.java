@@ -30,8 +30,8 @@ abstract class Student <C extends Course>
     public abstract bool isInGoodStanding();
 
     // Various getters
-    public String getName(C course);
-    public String getID(C course);
+    public String getName();
+    public String getID();
 
     // Course related helper methods
     public int getCourseGrade(C course);

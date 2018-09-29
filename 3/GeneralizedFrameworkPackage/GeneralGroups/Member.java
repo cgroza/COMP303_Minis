@@ -1,9 +1,11 @@
+package GeneralGroups;          // part of generalized framework package
+
 import java.util.ArrayList;
 
 // Generalization of an entity that can be part of Groups and can accumulate
 // tokens associated with those groups. Ex: students in a course, players in a
 // competition.
-abstract class Member <G extends Group>
+public class Member <G extends Group>
 {
     private String memberID;        // Member identification
 
