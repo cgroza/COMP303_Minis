@@ -5,11 +5,11 @@ import java.util.ArrayList;
 class Population<G extends Group, M extends Member>
 {
     // List of all groups that exist in this population of entities.
-    ArrayList<C> groups;
+    private ArrayList<C> groups;
     // List of all entities in this population>
-    ArrayList<S> members;
+    private ArrayList<S> members;
     // Identifier for the population
-    String populationID;
+    private String populationID;
 
     public Population(String aPopulationID);
 
@@ -24,5 +24,5 @@ class Population<G extends Group, M extends Member>
     public ArrayList<M> getMembers();
     public ArrayList<G> getGroups();
 
-    String getPopulationID();
+    public String getPopulationID();
 }

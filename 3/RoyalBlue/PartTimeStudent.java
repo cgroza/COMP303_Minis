@@ -1,4 +1,4 @@
-class PartTimeStudent
+class PartTimeStudent extends Student
 {
     // Conditions that part time students need to respect:
     private final int MAX_COURSES = 3;

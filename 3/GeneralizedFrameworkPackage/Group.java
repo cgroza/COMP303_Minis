@@ -11,7 +11,7 @@ class Group <M extends Member>
     // List of students registered in this course.
     private ArrayList<M> registeredMembers;
     // List of grades associated to each student.
-    private HashMap<S, LinkedList<Integer>> tokenRecord;
+    private HashMap<M, LinkedList<Integer>> tokenRecord;
     // Group identifier
     private String groupID;
 
@@ -19,7 +19,7 @@ class Group <M extends Member>
 
     // Adds member to the list of members currently in this group.
     // Meant to be called by Member.joinGroup()
-    public void addMember(S student);
+    public void addMember(M member);
 
     // Adds this group to all registered member's history and assigns them
     // their "tokens".

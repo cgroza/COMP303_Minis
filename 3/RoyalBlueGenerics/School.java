@@ -3,11 +3,11 @@ import java.util.ArrayList;
 class School<C extends Course, S extends Student>
 {
     // List of all courses ever given at this school.
-    ArrayList<C> courses;
+    private ArrayList<C> courses;
     // List of all students in this school.
-    ArrayList<S> students;
+    private ArrayList<S> students;
     // Identifier for the school
-    String schoolName;
+    private String schoolName;
 
     public School(String aSchoolName);
 

@@ -3,11 +3,11 @@ import java.util.ArrayList;
 class School
 {
     // List of all courses ever given at this school.
-    ArrayList<Course> courses;
+    private ArrayList<Course> courses;
     // List of all students in this school.
-    ArrayList<Student> students;
+    private ArrayList<Student> students;
     // Identifier for the school
-    String schoolName;
+    private String schoolName;
 
     public School(String aSchoolName);
 
@@ -22,5 +22,5 @@ class School
     public ArrayList<Student> getStudents();
     public ArrayList<Course> getCourses();
 
-    String getSchoolName();
+    public String getSchoolName();
 }

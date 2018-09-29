@@ -8,12 +8,12 @@ abstract class Member <G extends Group>
     private String memberID;        // Member identification
 
     // History of groups associations from the past.
-    ArrayList<G> groupHistory;
+    private ArrayList<G> groupHistory;
 
     // Tokens earned in past groups.
-    ArrayList<Pair<G, int>> groupTokens;
+    private ArrayList<Pair<G, int>> groupTokens;
     // List of current groups.
-    ArrayList<C> registeredCourses;
+    private ArrayList<C> currentGroups;
 
     public Member(String aMemberID);
 
@@ -38,8 +38,8 @@ abstract class Member <G extends Group>
     // Course related helper methods
     public int getGroupTokens(G group);
     public bool isJoined(G group);
-    public ArrayList<C> getGroupHistory();
-    public ArrayList<C> getJoinedGroups();
+    public ArrayList<G> getGroupHistory();
+    public ArrayList<G> getJoinedGroups();
     public int countJoinedGroups();
 
 }
