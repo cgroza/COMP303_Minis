@@ -19,4 +19,9 @@ class Course
     // Adds this course to all registered student's history and assigns them a
     // grade calculated from the gradeBook.
     public void finalizeCourse();
+
+    // Various getters
+    public HashMap<String, Student> getRegisteredStudents();
+    public HashMap<Student, LinkedList<Integer>> getGradeBook();
+    public String getCourseName();
 }

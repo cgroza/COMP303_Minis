@@ -25,4 +25,9 @@ public class Group <M extends Member>
     // Adds this group to all registered member's history and assigns them
     // their "tokens".
     public void finalizeGroup();
+
+    // Various getters
+    public HashMap<String, M> getRegisteredMembers();
+    public HashMap<M, LinkedList<Integer>> getTokenRecord();
+    public String getGroupID();
 }

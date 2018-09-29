@@ -1,6 +1,5 @@
 package GeneralGroups;          // part of generalized framework package
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 // Generalization of a collection of entities that can form groups between them

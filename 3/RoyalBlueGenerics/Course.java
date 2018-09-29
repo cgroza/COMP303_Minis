@@ -19,4 +19,9 @@ class Course <S extends Student>
     // Adds this course to all registered student's history and assigns them a
     // grade calculated from the gradeBook.
     public void finalizeCourse();
+
+    // Various getters
+    public HashMap<String, S> getRegisteredStudents();
+    public HashMap<S, LinkedList<Integer>> getGradeBook();
+    public String getCourseName();
 }
