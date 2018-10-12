@@ -15,7 +15,7 @@ public class Member <G extends Group>
     // Tokens earned in past groups.
     private ArrayList<Pair<G, int>> groupTokens;
     // List of current groups.
-    private ArrayList<C> currentGroups;
+    private ArrayList<G> currentGroups;
 
     public Member(String aMemberID);
 

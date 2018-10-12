@@ -7,9 +7,9 @@ import java.util.HashMap;
 public class Population<G extends Group, M extends Member>
 {
     // An index of groups by their unique ID
-    private HashMap<String, C> groups;
+    private HashMap<String, G> groups;
     // An index of all members by their unique memberID>
-    private HashMap<String, S> members;
+    private HashMap<String, M> members;
     // Identifier for the population
     private String populationID;
 
