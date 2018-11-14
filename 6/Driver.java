@@ -1,9 +1,19 @@
 import java.util.Scanner;
 
+// This class demonstrates how to use the system. It is not a demonstration of
+// the full capabilities of the system. It only demonstrates what was required
+// in the assignment.
 public class Driver
 {
+    // The system supports multiple named orders, but for this demonstration we
+    // will use a default one.
     public static final String DEFAULT_ORDER = "Order1";
-    public static int getPositiveNumber()
+
+    // Purpose: Reads a number from standard input.
+    // Parameters: None
+    // Returns: positive integer, or -1 if reading failed.
+    // Side effects: Reads STDIN.
+    public static int getNumber()
     {
         try {
             Scanner in = new Scanner(System.in);
@@ -16,6 +26,10 @@ public class Driver
         }
     }
 
+    // Purpose: Displays the menu and recovers a valid user choice.
+    // Parameters: None
+    // Returns: positive integer
+    // Side effects: Reads STDIN.
     public static int menu()
     {
         // Print out menu.
@@ -28,7 +42,14 @@ public class Driver
         System.out.println("7) Quit.");
 
         // Read user choice.
-        return getPositiveNumber();
+        int choice = getNumber();
+        // Keep trying until choice is valid.
+        while(choice < 1 || choice > 7){
+            System.out.println("Invalid choice.");
+            choice = getNumber();
+        }
+        // Return when choice is valid.
+        return choice;
     }
 
     public static void main(String[] args)
@@ -45,7 +66,10 @@ public class Driver
                         System.out.println(Menu.getMenu().print());
                         break;
                     case 2:
-                        // Order a full meal made of Guacamole, Giant Lobster and Cake
+                        // Order a full meal made of Guacamole, Giant Lobster
+                        // and Cake. The system allows for different full meals
+                        // given that the user is questioned on which items they
+                        // wish and the appropriate FullMealItem is constructed.
                         OrderingSystem.getSystem().orderFullMeal(
                                                                  DEFAULT_ORDER,
                                                                  (ItemAppetizer) Menu.getMenu().getItemByName("Guacamole"),
@@ -53,7 +77,6 @@ public class Driver
                                                                  (ItemDessert) Menu.getMenu().getItemByName("Cake")
                                                                  );
                         break;
-                        // OrderingSystem.getSystem().orderFullMeal();
                     case 3:
                         // Add a beer to the current order.
                         OrderingSystem.getSystem().addItemToOrder(DEFAULT_ORDER, Menu.getMenu().getItemByName("Beer"));
