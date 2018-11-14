@@ -1,16 +1,18 @@
+import java.util.HashMap;
 import java.util.ArrayList;
 
 // Only one menu is allowed to exist
 public class Menu
 {
     private static final Menu menu = new Menu();
-    private ArrayList<Item> items;
-    private ItemOfTheDay itemOfTheDay = new ItemOfTheDay(new ItemAppetizer("Oisters", 4.00));
+    private HashMap<String, Item> items;
+    private ItemOfTheDay itemOfTheDay = new ItemOfTheDay(new ItemSide("Oisters", 4.00));
     private Menu()
     {
-        items = new ArrayList<Item>();
+        items = new HashMap<String, Item>();
         // ItemOfTheDay is always stored at index 0
         addItem(itemOfTheDay);
+        addItem(new ItemAppetizer("Guacamole", 3.00));
         addItem(new ItemDessert("Cake", 11.00));
         addItem(new ItemDrink("Beer", 6.00, true));
         addItem(new ItemMainCourse("Giant Lobster", 30.00));
@@ -18,13 +20,18 @@ public class Menu
 
     public void addItem(Item item)
     {
-        items.add(item);
+        items.put(item.getName(),item);
+    }
+
+    public Item getItemByName(String name)
+    {
+        return items.get(name);
     }
 
     public void setItemOfTheDay(ItemOfTheDay item)
     {
         itemOfTheDay = item;
-        items.set(0, item);
+        items.put("ItemOfTheDay", item);
     }
 
     public ItemOfTheDay getItemOfTheDay()
@@ -34,7 +41,7 @@ public class Menu
 
     public ItemIterator getItemIterator()
     {
-        return new ItemIterator(items);
+        return new ItemIterator(new ArrayList<Item>(items.values()));
     }
 
     public static Menu getMenu()
@@ -44,7 +51,7 @@ public class Menu
 
     public String print()
     {
-        String menuText = "";
+        String menuText = "Menu:\n";
         ItemIterator itemIt = getItemIterator();
         while(itemIt.moreItems())
             {
