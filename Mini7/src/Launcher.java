@@ -1,3 +1,6 @@
+//Ryszard Kubinski 260731196
+//opens a frame and instantiates our controller
+
 import javax.swing.*;
 
 public class Launcher {
@@ -13,7 +16,7 @@ public class Launcher {
 
 
         GameModel gm = new GameModel();
-        GamePanel gp= new GamePanel(gm);
+        GamePanel gp= new GamePanel();
         gmFrame.add(gp);
         gm.resetGame();
 

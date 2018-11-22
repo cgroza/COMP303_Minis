@@ -1,3 +1,6 @@
+//Ryszard Kubinski 260731196
+//This is the View. The fields of view are partly duplicated from model and updated via update method.
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,15 +11,29 @@ public class GamePanel extends JPanel {
     private static final String FONT_NAME = "Arial";
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
-    private GameModel gm;
+    private Tile[] myTiles;
+    private boolean Win;
+    private boolean Loss;
+    private int score;
 
 
-    public GamePanel(GameModel model)
-        {gm=model;
+
+    public GamePanel()
+        {
             setPreferredSize(new Dimension(340, 400));
             setFocusable(true);
 
         }
+
+    //copies the fields of gameModel, called by constructor
+    public void update(boolean W, boolean L, Tile[] tiles, int myScore)
+    {
+        myTiles=tiles;
+        Win=W;
+        Loss=L;
+        score=myScore;
+        this.repaint();
+    }
 
     public void paint(Graphics g) {
         super.paint(g);
@@ -25,7 +42,7 @@ public class GamePanel extends JPanel {
 
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
-                drawTile(g, gm.getTile(x,y), x, y);
+                drawTile(g, myTiles[x + y * 4], x, y);
             }
         }
     }
@@ -53,26 +70,26 @@ public class GamePanel extends JPanel {
         if (value != 0)
             g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
 
-        if (gm.myWin || gm.myLose) {
+        if (Win || Loss) {
             g.setColor(new Color(255, 255, 255, 30));
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(new Color(78, 139, 202));
             g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
-            if (gm.myWin) {
+            if (Win) {
                 g.drawString("You won!", 68, 150);
             }
-            if (gm.myLose) {
+            if (Loss) {
                 g.drawString("Game over!", 50, 130);
                 g.drawString("You lose!", 64, 200);
             }
-            if (gm.myWin || gm.myLose) {
+            if (Win || Loss) {
                 g.setFont(new Font(FONT_NAME, Font.PLAIN, 16));
                 g.setColor(new Color(128, 128, 128, 128));
                 g.drawString("Press ESC to play again", 80, getHeight() - 40);
             }
         }
         g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-        g.drawString("Score: " + gm.myScore, 200, 365);
+        g.drawString("Score: " + score, 200, 365);
 
     }
 

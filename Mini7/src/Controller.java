@@ -1,4 +1,5 @@
-import javax.swing.*;
+//Ryszard Kubinski 260731196
+//Controls information passing between Model and View
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -7,11 +8,12 @@ public class Controller extends KeyAdapter {
     private GameModel gm;
     private GamePanel gp;
 
-
+    //instantiates the controller together with its view and model
+    //updates duplicated fields of the view
     public Controller(GameModel model, GamePanel panel) {
         gm = model;
         gp = panel;
-
+        gp.update(gm.myWin,gm.myLose,gm.getMyTiles(),gm.myScore);
     }
 
     @Override
@@ -43,8 +45,9 @@ public class Controller extends KeyAdapter {
         if (!gm.myWin && !gm.canMove()) {
             gm.myLose = true;
         }
+        //updates fields of the view by grabbing fields from the model
+        gp.update(gm.myWin,gm.myLose, gm.getMyTiles(),gm.myScore);
 
-        gp.repaint();
     }
 
 

@@ -1,3 +1,7 @@
+//Ryszard Kubinski 260731196
+//Tile object acts in array of Tile objects in the GameModel
+
+
 import java.awt.*;
 
 public class Tile {

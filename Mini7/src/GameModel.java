@@ -1,4 +1,5 @@
-import java.awt.*;
+//Ryszard Kubinski 260731196
+//handles manipulations on tiles based on user input and controller input
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,7 +57,7 @@ public class GameModel {
         myTiles = rotate(270);
     }
 
-    private Tile tileAt(int x, int y) {
+    public Tile tileAt(int x, int y) {
         return myTiles[x + y * 4];
     }
 
@@ -202,9 +203,7 @@ public class GameModel {
     public Tile[] getMyTiles()
     {return myTiles;}
 
-    public Tile getTile(int x, int y)
-    {return myTiles[x + y * 4];
-    }
+
 
 
 }
