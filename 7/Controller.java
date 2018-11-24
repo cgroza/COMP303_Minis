@@ -3,7 +3,7 @@ import java.awt.event.KeyEvent;
 
 // This class implements the Controller component of the MVC pattern. It handles
 // user key press events and instructs the Model to update accordingly. It also
-// instructs the View to update itself.
+// updates the View with the new state.
 public class Controller extends KeyAdapter {
 
     private GameModel game;
@@ -46,8 +46,8 @@ public class Controller extends KeyAdapter {
             game.setMyLose(true);
         }
 
-        // Trigger the repaint event so that the Viewer component updates
-        // itself with the new model state.
-        gamePanel.repaint();
+        // Update the view with the new state of the model
+        gamePanel.drawState(game.getTiles(), game.getMyWin(), game.getMyLose(),
+                         game.getMyScore());
     }
 }

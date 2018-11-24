@@ -14,7 +14,9 @@ public class Launcher {
         GameModel gameModel = new GameModel();
         // Create the game Viewer. Pass in reference to model so that viewer can
         // read the model and draw itself accordingly.
-        GamePanel gamePanel = new GamePanel(gameModel);
+        GamePanel gamePanel = new GamePanel();
+        gamePanel.drawState(gameModel.getTiles(), gameModel.getMyWin(), gameModel.getMyLose(),
+                         gameModel.getMyScore());
         gameFrame.add(gamePanel);
         // Create the game Controller.
         gamePanel.addKeyListener(new Controller(gameModel, gamePanel));

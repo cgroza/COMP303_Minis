@@ -1,9 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 
-// This class implements the View component of the MVC pattern. It holds a
-// reference to the Model, and draws itself accordingly when the Controller
-// triggers a repaint event.
+// This class implements the View component of the MVC pattern. It holds
+// holds a state to be drawn that must be updated by the Controller.
 public class GamePanel extends JPanel
 {
     // Transplanted constants.
@@ -12,14 +11,27 @@ public class GamePanel extends JPanel
     private static final int TILE_SIZE = 64;
     private static final int TILES_MARGIN = 16;
 
-    // Reference to the GameModel that describes what to draw.
-    GameModel gameModel;
+    //  State of the GameModel that describes what to draw.
+    private Tile[] tiles;
+    private boolean win;
+    private boolean lose;
+    private int score;
 
-    public GamePanel(GameModel gm)
+
+    public GamePanel()
     {
-        gameModel = gm;
         setPreferredSize(new Dimension(340, 400));
         setFocusable(true);
+    }
+
+    // Update the state to be drawn.
+    public void drawState(Tile[] tiles, boolean win, boolean lose, int score)
+    {
+        this.tiles = tiles;
+        this.win = win;
+        this.lose = lose;
+        this.score = score;
+        repaint();
     }
 
     // Transplanted methods from the original implementation.
@@ -30,7 +42,7 @@ public class GamePanel extends JPanel
         g.fillRect(0, 0, this.getSize().width, this.getSize().height);
         for (int y = 0; y < 4; y++) {
             for (int x = 0; x < 4; x++) {
-                drawTile(g, gameModel.tileAt(x,y), x, y);
+                drawTile(g, tiles[x + y * 4], x, y);
             }
         }
     }
@@ -62,25 +74,25 @@ public class GamePanel extends JPanel
         if (value != 0)
             g.drawString(s, xOffset + (TILE_SIZE - w) / 2, yOffset + TILE_SIZE - (TILE_SIZE - h) / 2 - 2);
 
-        if (gameModel.getMyWin() || gameModel.getMyLose()) {
+        if (win || lose) {
             g.setColor(new Color(255, 255, 255, 30));
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(new Color(78, 139, 202));
             g.setFont(new Font(FONT_NAME, Font.BOLD, 48));
-            if (gameModel.getMyWin()) {
+            if (win) {
                 g.drawString("You won!", 68, 150);
             }
-            if (gameModel.getMyLose()) {
+            if (lose) {
                 g.drawString("Game over!", 50, 130);
                 g.drawString("You lose!", 64, 200);
             }
-            if (gameModel.getMyWin() || gameModel.getMyLose()) {
+            if (win || lose) {
                 g.setFont(new Font(FONT_NAME, Font.PLAIN, 16));
                 g.setColor(new Color(128, 128, 128, 128));
                 g.drawString("Press ESC to play again", 80, getHeight() - 40);
             }
         }
         g.setFont(new Font(FONT_NAME, Font.PLAIN, 18));
-        g.drawString("Score: " + gameModel.getMyScore(), 200, 365);
+        g.drawString("Score: " + score, 200, 365);
     }
 }

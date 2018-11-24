@@ -39,6 +39,10 @@ public class GameModel
         return myScore;
     }
 
+    public Tile[] getTiles()
+    {
+        return myTiles;
+    }
     // Transplanted methods from the original implementation.
     public void resetGame()
     {
