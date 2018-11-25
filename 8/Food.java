@@ -1,3 +1,4 @@
+// Representation of the food item to be stored in the table.
 public class Food
 {
     private String foodName;

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+// Abstract class contract of Table following the Template pattern.
 public abstract class TableTM <T> {
     protected ArrayList<String> columnNames;
     protected ArrayList<T> entries = new ArrayList<T>();

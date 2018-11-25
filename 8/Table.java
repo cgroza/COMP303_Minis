@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.ArrayList;
 
+// Implementation of table using the strategy pattern.
 public class Table <T>
 {
     private ArrayList<String> columnNames;

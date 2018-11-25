@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+// Implementation of the Strategy pattern for the caloric calculation.
 public class CaloricCalculation implements ColumnsCalculation<Food>
 {
     // Computes the columns for this entry.

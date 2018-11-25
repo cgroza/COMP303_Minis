@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+// Implementation of Table for Food items.
 public class TableTMFood extends TableTM<Food>
 {
     public TableTMFood()
