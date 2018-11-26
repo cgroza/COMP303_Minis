@@ -29,21 +29,7 @@ public abstract class TableTM <T>{
       public ArrayList<String> getHeader()
       {return header;}
 
-    public void print() {
-        String headerString = calcHeader(header);
-        int headerSize = headerString.length();
-        System.out.println(headerString);
-
-        for (int i = 0; i <= headerSize; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
-
-        for (T t: elements)
-        {System.out.println(calcRow(t,headerSize));}
-
-
-    }
+    protected abstract void print();
 
 
     protected abstract String calcHeader(ArrayList<String> head);

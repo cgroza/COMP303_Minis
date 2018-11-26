@@ -49,7 +49,17 @@ public class FoodTableTM extends TableTM<Food> {
     }
 
     public void print() {
-        super.print();
+        String headerString = calcHeader(super.getHeader());
+        int headerSize = headerString.length();
+        System.out.println(headerString);
+
+        for (int i = 0; i <= headerSize; i++) {
+            System.out.print("-");
         }
-    
+        System.out.println();
+
+        for (Food f: super.getElems())
+        {System.out.println(calcRow(f,headerSize));}
+        }
+
 }
