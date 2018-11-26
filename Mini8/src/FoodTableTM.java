@@ -1,21 +1,24 @@
-import java.lang.reflect.Array;
+//Ryszard Kubinski 260731196
+//November 25, 2018
+//Based on the Table Template, the FoodTableTM is specific to Food items
 import java.util.ArrayList;
 
-public class FoodTableTM<T> extends TableTM<T> {
+public class FoodTableTM extends TableTM<Food> {
 
-
+    //constructor passes the header arraylist to the super class
     public FoodTableTM(ArrayList<String> head) {
         super(head);
     }
-
-    public void addToTable(T elem) {
+    //adding to the item list
+    public void addToTable(Food elem) {
         super.addToTable(elem);
     }
-
-    public void removeFromTable(T elem) {
+    //removing from item list
+    public void removeFromTable(Food elem) {
         super.removeFromTable(elem);
     }
 
+    //Turns the arraylist of strings that is the header into a printable string with a length
     @Override
     protected String calcHeader(ArrayList<String> head) {
         String header = " ";
@@ -25,9 +28,10 @@ public class FoodTableTM<T> extends TableTM<T> {
         return header;
     }
 
+    //Based on header length, we create a string with different number of white space for the row
     @Override
-    protected String calcRow(T t, int headersize) {
-        Food f = (Food) t;
+    protected String calcRow(Food f, int headersize) {
+
         String output = "  ";
         String name = f.getName();
         String cals = ((f.getCarbs() * 4) + (f.getFat() * 9) + (f.getProtein() * 4)) + " cal";
@@ -45,17 +49,7 @@ public class FoodTableTM<T> extends TableTM<T> {
     }
 
     public void print() {
-        String headerString = calcHeader(super.getHeader());
-        int headerSize = headerString.length();
-        System.out.println(headerString);
-
-        for (int i = 0; i <= headerSize; i++) {
-            System.out.print("-");
+        super.print();
         }
-        System.out.println();
-
-        for (T t : super.getElems()) {
-            System.out.println(calcRow(t, headerSize));
-        }
-    }
+    
 }
