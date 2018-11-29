@@ -12,8 +12,8 @@ public class Driver
         table1.addItem(new Food("Banana", 27, 0, 1));
         table1.addItem(new Food("Egg", 0, 5, 6));
         table1.addItem(new Food("Bagel", 56, 2, 11));
-        table1.addItem(new Food("Cabage", 1, 1, 1));
-        table1.addItem(new Food("Cake", 400, 100, 11));
+        // table1.addItem(new Food("Cabage", 1, 1, 1));
+        // table1.addItem(new Food("Cake", 400, 100, 11));
         table1.print();
 
         System.out.println();
@@ -24,8 +24,8 @@ public class Driver
         table2.addItem(new Food("Banana", 27, 0, 1));
         table2.addItem(new Food("Egg", 0, 5, 6));
         table2.addItem(new Food("Bagel", 56, 2, 11));
-        table2.addItem(new Food("Cabage", 1, 1, 1));
-        table2.addItem(new Food("Cake", 400, 100, 11));
+        // table2.addItem(new Food("Cabage", 1, 1, 1));
+        // table2.addItem(new Food("Cake", 400, 100, 11));
         table2.print();
     }
 }

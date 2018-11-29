@@ -36,30 +36,10 @@ public class Table <T>
 
     public void print()
     {
-        // Print header column names.
-        for(String col : columnNames) System.out.print(" " + col + "  ");
-        System.out.println();
-        // Print dash line.
-        for(String col : columnNames)
-            {
-                System.out.print("-");
-                for(int i = 0; i < col.length(); i++)
-                    System.out.print("-");
-                System.out.print("-");
-            }
-        System.out.println();
-
+        System.out.println(columnCalculation.calculateHeader());
         for(T entry : entries)
             {
-                ArrayList<String> calculatedColumns = columnCalculation.calculateColumns(entry);
-                for(int i = 0; i < columnNames.size(); i++) {
-                    // Build formatting string for this column.
-                    String format = "%" + Integer.toString(columnNames.get(i).length() + 2) + "s";
-                    // Print this column.
-                    System.out.format(format, calculatedColumns.get(i));
-                }
-                // End line entry.
-                System.out.format("%n");
+                System.out.println(columnCalculation.calculateColumns(entry));
             }
     }
 }
